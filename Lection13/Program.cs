@@ -1,5 +1,6 @@
 ﻿using MMOLibrary;
 using System;
+using System.Collections.Generic;
 
 namespace Lection13
 {
@@ -72,10 +73,10 @@ namespace Lection13
             b = temp;
         }
 
-        static void Main(string[] args)
+        static void GameDemo()
         {
             int warriorWinsCount = 0;
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10_000_000; i++)
             {
                 Unit[] units = new Unit[2];
                 units[0] = new Warrior();
@@ -92,6 +93,20 @@ namespace Lection13
             }
 
             Console.WriteLine($"War win count: {warriorWinsCount}");
+        }
+
+        static void Main(string[] args)
+        {
+            LinkedList<int> arr = new LinkedList<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                arr.AddLast(i);
+            }
+
+            foreach (int item in arr)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
