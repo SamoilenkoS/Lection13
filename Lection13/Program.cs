@@ -4,7 +4,7 @@ namespace Lection13
 {
     class Program
     {
-        static int Max(int[] array)
+        static int MaxValue(int[] array)
         {
             int max = array[0];
             for (int i = 1; i < array.Length; i++)
