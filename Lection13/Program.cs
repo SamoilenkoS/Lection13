@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MMOLibrary;
+using System;
 
 namespace Lection13
 {
@@ -25,9 +26,72 @@ namespace Lection13
             return max;
         }
 
+        static void VirtualExample()
+        {
+            Animal[] animals = new Animal[2];
+            animals[0] = new Cat("Basya");
+            animals[1] = new Dog();
+
+            foreach (var animal in animals)
+            {
+                animal.SaySound();
+            }
+        }
+
+        static void ExtensionsExample()
+        {
+            for (int i = -10; i <= 10; i++)
+            {
+                Console.WriteLine($"{i}\t{i.Square()}");
+            }
+        }
+
+        static void EnumsExample()
+        {
+            foreach (var w in Enum.GetValues(typeof(Weight)))
+            {
+                Console.WriteLine(w);
+            }
+
+            Weight weight = Weight.Tonn;
+            switch (weight)
+            {
+                case Weight.Gram:
+                case Weight.Kilogram:
+                    break;
+                case Weight.Tonn:
+                    break;
+            }
+            Console.WriteLine((int)weight);
+        }
+
+        static void Swap(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int warriorWinsCount = 0;
+            for (int i = 0; i < 1000; i++)
+            {
+                Unit[] units = new Unit[2];
+                units[0] = new Warrior();
+                units[1] = new Archer();
+                int attacker = 0;
+                int defender = 1;
+                while (units[0].IsAlive && units[1].IsAlive)
+                {
+                    units[attacker].Attack(units[defender]);
+                    Swap(ref attacker, ref defender);
+                }
+
+                warriorWinsCount += units[0].IsAlive ? 1 : 0;
+            }
+
+            Console.WriteLine($"War win count: {warriorWinsCount}");
         }
     }
 }
