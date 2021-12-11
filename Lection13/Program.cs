@@ -4,6 +4,13 @@ namespace Lection13
 {
     class Program
     {
+        static int Min(int[] array)
+        {//
+            int a = 10;
+            int b = 5;
+            return a + b;
+        }
+
         static int MaxValue(int[] array)
         {
             int max = array[0];
